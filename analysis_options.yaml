@@ -1,0 +1,41 @@
+# Analysis configuration for DEVMOB-CovoitLocal (Flutter MVC + Firebase)
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - lib/**/*.g.dart   # generated files from Firebase or JSON serialization
+
+linter:
+  rules:
+    # --- STYLE ---
+    prefer_single_quotes: true
+    prefer_const_constructors: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+    avoid_print: true               # no print in production (use logger)
+    avoid_unnecessary_containers: true
+    avoid_empty_else: true
+    always_use_package_imports: true
+
+    # --- SAFETY ---
+    null_closures: true
+    unawaited_futures:
+    avoid_types_as_parameter_names: true
+
+    # --- CLEAN CODE ---
+    always_declare_return_types: true
+    type_annotate_public_apis: true
+    unnecessary_this: false
+    require_trailing_commas: true
+
+    # --- FIREBASE + ASYNC ---
+    cancel_subscriptions: true
+    close_sinks: true
+    avoid_void_async: true
+
+    # --- ARCHITECTURE / PROJECT RULES ---
+    depend_on_referenced_packages: true          # prevents bad imports
+    package_names: true                          # project should respect naming conventions
+    implementation_imports: false                # prevents importing /data in /presentation
