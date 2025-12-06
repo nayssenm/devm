@@ -2,7 +2,6 @@
 // Exemple minimal — remplace les valeurs par celles de ton projet Firebase.
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart' show defaultTargetPlatform, TargetPlatform;
 
 /// Classe minimale pour fournir les options Firebase attendues par
 /// `Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)`.
