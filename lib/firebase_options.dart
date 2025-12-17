@@ -26,3 +26,4 @@ class DefaultFirebaseOptions {
   // static const FirebaseOptions ios = FirebaseOptions(...);
   // static const FirebaseOptions web = FirebaseOptions(...);
 }
+

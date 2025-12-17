@@ -14,7 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   final _emailC = TextEditingController();
   final _passC = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  bool _isEmailValid = true;
+  final bool _isEmailValid = true;
   String? _emailError;
   
   // Variables pour les effets de survol
@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           // Background avec image
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(
                   'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80',
@@ -265,7 +265,7 @@ class _LoginPageState extends State<LoginPage> {
                               gradient: LinearGradient(
                                 colors: _isLoginHovered
                                     ? [lightBlue, accentBlue]
-                                    : [accentBlue, Color(0xFF3A5F8F)],
+                                    : [accentBlue, const Color(0xFF3A5F8F)],
                                 begin: Alignment.centerLeft,
                                 end: Alignment.centerRight,
                               ),
