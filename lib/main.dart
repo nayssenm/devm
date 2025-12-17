@@ -2,27 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
-import 'package:devm_covoitlocal/controllers/auth_controller.dart';
-import 'package:devm_covoitlocal/controllers/trajet_controller.dart';
-import 'package:devm_covoitlocal/services/firestore_service.dart';
-import 'package:devm_covoitlocal/views/splash_page.dart';
-import 'package:devm_covoitlocal/firebase_options.dart';
+import 'controllers/auth_controller.dart';
+import 'controllers/trajet_controller.dart';
+import 'services/firestore_service.dart';
+import 'views/splash_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  
 
-  // 🔐 Protection contre l'initialisation multiple (Hot Restart)
-  if (Firebase.apps.isEmpty) {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-  }
-
-  runApp(const MyApp());
+  runApp(const CovoitLocalApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CovoitLocalApp extends StatelessWidget {
+  const CovoitLocalApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +25,11 @@ class MyApp extends StatelessWidget {
         Provider<FirestoreService>(
           create: (_) => FirestoreService(),
         ),
-
         ChangeNotifierProvider<AuthController>(
-          create: (ctx) =>
-              AuthController(ctx.read<FirestoreService>()),
+          create: (ctx) => AuthController(ctx.read<FirestoreService>()),
         ),
-
         ChangeNotifierProvider<TrajetController>(
-          create: (ctx) =>
-              TrajetController(ctx.read<FirestoreService>()),
+          create: (ctx) => TrajetController(ctx.read<FirestoreService>()),
         ),
       ],
       child: MaterialApp(
@@ -54,4 +44,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-;
